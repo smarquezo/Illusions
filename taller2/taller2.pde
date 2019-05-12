@@ -32,7 +32,7 @@ void draw(){
       angles();
       break;
     case 6:
-      text("asd5", 10, 30);
+      sigma_motion();
       break;
     case 7:
     text("asd6", 10, 30);
@@ -115,7 +115,7 @@ void SteppingFeet() {
   rect(400, ySquare, 70, 120);
 }
 
-//SteppingFeet vertical/////////////////////////////////////////////////////////////
+//SteppingFeet horizontal/////////////////////////////////////////////////////////////
 
 //int hSquare = 130;
 //int xSquare = 120;
@@ -172,7 +172,7 @@ void HeringIllusion() {
   line(300, 0, 300, 500);
 }
 
-///////////////////////////////////////////////////////////////////////
+//Angles illusion/////////////////////////////////////////////////////////////////////
 
 void angles() {
   //coloring
@@ -186,4 +186,22 @@ void angles() {
   fill(100, 0, 100);
   quad(380, 140, 415, 170, 140, 170, 120, 140);
   quad(140, 170, 180, 170, 250, 275, 225, 310);
+}
+
+
+//Sigma motion //////////////////////////////////////////////////////////////////
+int state=2000;
+void sigma_motion(){
+  int a =100;
+  for(int x=0;x<a;++x){
+    background(0);
+  }
+  
+  for(int x=0;x<800/25;++x){
+    int theme = ( (state%2 == 0 && x%2 == 0) || ( state%2 != 0 && x%2 == 1) ) ? 255 : 0; 
+    fill(theme);
+    stroke(theme);
+    rect(25*x,0,100,800);
+  }
+  state = (state+1)%100;
 }
